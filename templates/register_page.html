@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="center-wrapper">
+    <div class="form-container">
+        <form action="/register" method="POST">
+            {% if error %}
+                <p class="error-text"> {{ error }} </p>
+            {% endif %}
+            <p>Логин:</p>
+            <input class="input-text" name="user_name"> <br>
+            <p>Пароль:</p>
+            <input type="password" class="input-text" name="user_password"> <br>
+            <button>Зарегестрироваться</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

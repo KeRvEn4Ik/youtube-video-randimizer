@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomVideo</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+{% if user %}
+  <body class="{{ 'dark' if user.theme == 0 else 'light' }}">
+{% else %}
+  <body class="light">
+{% endif %}
+    <nav class="headbar">
+        <div class="nav-container">
+            <a href="/" class="main-page-text">Случайное видео</a>
+            {% if user %}
+            <div class="right-links">
+                <a href="/logout" class="head-text">Выйти</a>
+            </div>
+            <div class="left-links">
+                <a href="/settings" class="head-text">Настройки аккаунта</a>
+            </div>
+            {% else %}
+            <div class="right-links">
+                <a href="/login" class="head-text">Войти</a>
+                <a href="/register" class="head-text">Зарегистрироваться</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div>
+        {% block content %} {% endblock %}
+    </div>
+
+</body>
+</html>

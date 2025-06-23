@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<a href="/" class="button">На главную</a>
+<h1>Настройки</h1>
+
+<p>Логин:{{ user.user_name }}</p>
+
+<p>Тема:</p><br>
+<form action="/settings" method="POST">
+    <button type="submit", name="theme", value="{{ 1 if user.theme == 0 else 0 }}"> 
+        {% if user.theme == 0 %}
+            Светлая
+        {% else %}
+            Темная
+        {% endif %}
+    </button>
+</form>
+
+<h2>История</h2>
+<ul>
+    {% for video in history %}
+        <a href="{{ video.url_for_video }}" class="history-item">
+             {{ video.title }} 
+        </a><br>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,14 +1,16 @@
 from flask import Flask, request, redirect, render_template, session
+from dotenv import load_dotenv
 import os
 import database
 import random
 import requests
 
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-API_KEY = 'AIzaSyBQSvezVu8vLf-Lbv7M1RYmqoEe1QslcAc'
+API_KEY = os.getenv("API_KEY")
 url_for_video = 'https://www.youtube.com/watch?v=N-_SHsOejKw'
 
 def get_random_video_id():
